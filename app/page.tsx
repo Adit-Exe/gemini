@@ -36,7 +36,7 @@ export default function GenerativeAIPage() {
         <Markdown>{ans}</Markdown>
       </pre>
 
-      <img src="/images/gemini.png" alt="" className='w-80' />
+      <img src="/images/image.png" alt="" className='w-80' />
 
     </div>
 
