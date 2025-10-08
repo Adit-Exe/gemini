@@ -11,14 +11,18 @@ const model = genAI.getGenerativeModel({
 });
 
 export default function GenerativeAIPage() {
-  const [ans, setAns] = useState('`model: "gemini-2.5-flash`"');
+  const [ans, setAns] = useState('');
   const [prompt, setPrompt] = useState('');
+  const [hline, setHline] = useState('');
 
   const handleSubmit = async (event: { preventDefault: () => void; }) => {
+    setHline(prompt);
+    setAns("Gettting response...");
     event.preventDefault();
     const result = await model.generateContent(prompt);
     const answer = result.response.text();
     setAns(answer);
+
   };
 
   return (
@@ -32,7 +36,14 @@ export default function GenerativeAIPage() {
         />
         <button type="submit" className='shadow-xl bg-white rounded-2xl px-4 py-2 active:text-white' >Ask</button>
       </form>
-      <pre className='shadow-xl bg-white rounded-2xl  px-4 py-2 mt-5 max-w-[80%] text-wrap font-sans'>
+      <div className='max-w-[80%] w-full mt-9'>
+        <h1 className='self-start font-bold text-3xl sm:text-5xl'>{hline}</h1>
+
+      </div>
+
+
+
+      <pre className='mt-5 max-w-[80%] text-wrap font-sans text-md sm:text-lg'>
         <Markdown>{ans}</Markdown>
       </pre>
 
