@@ -47,7 +47,7 @@ export default function GenerativeAIPage() {
         <Markdown>{ans}</Markdown>
       </pre>
 
-      <img src="/images/image.png" alt="" className='w-80' />
+      <img src="/images/image.png" alt="" className='sm:w-96 w-60' />
 
     </div>
 
