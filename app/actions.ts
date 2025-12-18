@@ -17,8 +17,10 @@ export async function generateGeminiContent(prompt: string) {
         const result = await model.generateContent(prompt);
         const response = await result.response;
         return response.text();
-    } catch (error) {
-        console.error("Error generating content:", error);
-        return "An error occurred while generating content.";
+    } catch (error: any) {
+        console.error("Gemini API Error:", error);
+        // Return a more descriptive error message if available
+        const errorMessage = error.message || "An error occurred while generating content.";
+        return `Error: ${errorMessage}`;
     }
 }
